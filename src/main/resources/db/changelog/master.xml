@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+    <changeSet id="0001" author="mjankowski">
+        <createTable tableName="family">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="family_name" type="VARCHAR(100)"/>
+            <column name="nr_of_adults" type="INT"/>
+            <column name="nr_of_children" type="INT"/>
+            <column name="nr_of_infants" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="0002" author="mjankowski">
+        <createTable tableName="family_member">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="family_id" type="INT"/>
+            <column name="family_name" type="VARCHAR(100)"/>
+            <column name="given_name" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <include file="../testdata/testdata.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>
